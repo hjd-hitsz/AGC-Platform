@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="pose_feedback_fake" pkg="platform_manager" type="get_gazebo_pose_feedback.py" output="screen"/>
+    <node name="takeoff" pkg="platform_manager" type="takeoff_node" output="screen"/>
+</launch>

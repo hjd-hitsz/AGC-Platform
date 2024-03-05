@@ -1,0 +1,990 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="hummingbird">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="2.107566" />
+      <!-- value="0.7566" /> -->
+      <inertia
+        ixx="0.02241"
+        ixy="-8.9121E-08"
+        ixz="6.1409E-06"
+        iyy="0.02631"
+        iyz="-4.0193E-06"
+        izz="0.03758" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rotors_description/description/cr450/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rotors_description/description/cr450/base_link.STL" />
+      </geometry>
+      <!-- <friction>
+      <ode>
+          <mu>0.1</mu>
+          <mu2>0.1</mu2>
+      </ode>
+      </friction> -->
+    </collision>
+  </link>
+  <link
+    name="Arm_base">
+    <inertial>
+      <origin
+        xyz="0.0054578 0.0026351 -0.023188"
+        rpy="0 0 0" />
+      <mass
+        value="0.001" />
+      <inertia
+        ixx="3.6352E-05"
+        ixy="6.5646E-06"
+        ixz="-1.5021E-07"
+        iyy="7.5655E-05"
+        iyz="1.4766E-06"
+        izz="7.5758E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rotors_description/description/cr450/Arm_base.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rotors_description/description/cr450/Arm_base.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Arm_Base_joint"
+    type="fixed">
+    <origin
+      xyz="0.00064227 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Arm_base" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Arm1">
+    <inertial>
+      <origin
+        xyz="-0.060375 8.6392E-05 -0.014312"
+        rpy="0 0 0" />
+      <mass
+        value="0.031972" />
+      <inertia
+        ixx="4.5666E-06"
+        ixy="2.3617E-21"
+        ixz="-1.0416E-05"
+        iyy="4.9543E-05"
+        iyz="5.4084E-22"
+        izz="4.6037E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rotors_description/description/cr450/Arm1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rotors_description/description/cr450/Arm1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Arm1_joint"
+    type="revolute">
+    <origin
+      xyz="0.0071077 0.00025 -0.04"
+      rpy="0 0 0" />
+    <parent
+      link="Arm_base" />
+    <child
+      link="Arm1" />
+    <axis
+      xyz="0 -1 0" />
+      <dynamics damping="0.01" friction="0.0" />
+    <limit effort="300.0" lower="-3." upper="3." velocity="50.0" />
+    <physics>
+      <ode>
+        <limit>
+          <cfm>0</cfm>
+          <erp>0.2</erp>
+        </limit>
+        <suspension>
+          <cfm>0</cfm>
+          <erp>0.2</erp>
+        </suspension>
+      </ode>
+      <!-- <damping>0.2</damping> -->
+    </physics>
+  </joint>
+  <link
+    name="Arm2">
+    <inertial>
+      <origin
+        xyz="0.043771 -3.6917E-17 -1.3878E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.0535" />
+      <inertia
+        ixx="6.1259E-06"
+        ixy="9.2454E-21"
+        ixz="1.1406E-20"
+        iyy="7.2746E-05"
+        iyz="2.3784E-21"
+        izz="7.3534E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rotors_description/description/cr450/Arm2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rotors_description/description/cr450/Arm2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Arm2_joint"
+    type="revolute">
+    <origin
+      xyz="-0.116764314868635 0 -0.0276784171017473"
+      rpy="0 0 0" />
+    <parent
+      link="Arm1" />
+    <child
+      link="Arm2" />
+    <axis
+      xyz="0 -1 0" />
+      <dynamics damping="0.01" friction="0.0" />
+    <limit effort="300.0" lower="-3." upper="3." velocity="50.0" />
+    <physics>
+      <ode>
+        <limit>
+          <cfm>0</cfm>
+          <erp>0.2</erp>
+        </limit>
+        <suspension>
+          <cfm>0</cfm>
+          <erp>0.2</erp>
+        </suspension>
+      </ode>
+      <!-- <damping>0.2</damping> -->
+    </physics>
+  </joint>
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="Arm2_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="Arm1_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <gazebo reference="Arm1_joint">
+    <provideFeedback>true</provideFeedback>
+  </gazebo>
+  <gazebo reference="Arm2_joint">
+    <provideFeedback>true</provideFeedback>
+  </gazebo>
+  <gazebo reference="bat">
+    <sensor type="contact" name="my_contact">
+      <update_rate>5</update_rate>
+      <always_on>1</always_on>
+      <contact>
+        <collision>bat</collision>
+      </contact>
+      <plugin name="my_plugin" filename="libcontact.so" />
+    </sensor>
+  </gazebo>
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
+    <plugin name="ft_sensor1" filename="libgazebo_ros_ft_sensor.so">
+      <updateRate>50.0</updateRate>
+      <topicName>/joint1/ft</topicName>
+      <jointName>Arm1_joint</jointName>
+    </plugin>
+    <plugin name="ft_sensor2" filename="libgazebo_ros_ft_sensor.so">
+      <updateRate>50.0</updateRate>
+      <topicName>/joint2/ft</topicName>
+      <jointName>Arm2_joint</jointName>
+    </plugin>
+  </gazebo>
+  <link
+    name="bat">
+    <inertial>
+      <origin
+        xyz="-0.0088683 -1.8431E-18 -0.002"
+        rpy="0 0 0" />
+      <mass
+        value="0.081422" />
+      <inertia
+        ixx="9.1973E-05"
+        ixy="2.2485E-21"
+        ixz="1.4372E-20"
+        iyy="0.00014797"
+        iyz="-7.7528E-23"
+        izz="0.00023973" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rotors_description/description/cr450/bat.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rotors_description/description/cr450/bat.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bat_joint"
+    type="fixed">
+    <origin
+      xyz="0.213156059729382 0 0.00190000000000005"
+      rpy="0 0 0" />
+    <parent
+      link="Arm2" />
+    <child
+      link="bat" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="FL_blade">
+    <inertial>
+      <origin
+        xyz="2.5646E-08 -1.3913E-08 -0.0056362"
+        rpy="0 0 0" />
+      <mass
+        value="0.011718" />
+      <inertia
+        ixx="2.0616E-05"
+        ixy="2.5518E-05"
+        ixz="-5.0635E-13"
+        iyy="3.2679E-05"
+        iyz="1.8143E-13"
+        izz="5.3207E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rotors_description/description/cr450/FL_blade.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rotors_description/description/cr450/FL_blade.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="FL_blade_joint"
+    type="continuous">
+    <origin
+      xyz="0.1591 0.1591 0.0717"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="FL_blade" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="FR_blade">
+    <inertial>
+      <origin
+        xyz="-7.392E-09 -1.3733E-08 -0.0056362"
+        rpy="0 0 0" />
+      <mass
+        value="0.011718" />
+      <inertia
+        ixx="2.7345E-05"
+        ixy="-2.6212E-05"
+        ixz="8.0345E-14"
+        iyy="2.595E-05"
+        iyz="3.1056E-13"
+        izz="5.3207E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rotors_description/description/cr450/FR_blade.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rotors_description/description/cr450/FR_blade.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="FR_blade_joint"
+    type="continuous">
+    <origin
+      xyz="0.1591 -0.1591 0.0717"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="FR_blade" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="BL_blade">
+    <inertial>
+      <origin
+        xyz="6.8517E-09 1.3761E-08 -0.0056362"
+        rpy="0 0 0" />
+      <mass
+        value="0.011718" />
+      <inertia
+        ixx="2.8885E-05"
+        ixy="-2.6125E-05"
+        ixz="-6.7614E-14"
+        iyy="2.441E-05"
+        iyz="-3.0842E-13"
+        izz="5.3207E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rotors_description/description/cr450/BL_blade.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rotors_description/description/cr450/BL_blade.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="BL_blade_joint"
+    type="continuous">
+    <origin
+      xyz="-0.1591 0.1591 0.0717"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="BL_blade" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="BR_blade">
+    <inertial>
+      <origin
+        xyz="-0.0028383 0.0010537 0.020483"
+        rpy="0 0 0" />
+      <mass
+        value="0.011718" />
+      <inertia
+        ixx="2.8885E-05"
+        ixy="-2.6125E-05"
+        ixz="-6.7614E-14"
+        iyy="2.441E-05"
+        iyz="-3.0842E-13"
+        izz="5.3207E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rotors_description/description/cr450/BR_blade.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rotors_description/description/cr450/BR_blade.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="BR_blade_joint"
+    type="continuous">
+    <origin
+      xyz="-0.159099025766973 -0.159099025766973 0.0717"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="BR_blade" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <gazebo>
+    <plugin filename="libgazebo_multirotor_base_plugin.so" name="rosbag">
+      <robotNamespace></robotNamespace>
+      <linkName>base_link</linkName>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin filename="libgazebo_motor_model.so" name="front_left_motor_model">
+      <robotNamespace></robotNamespace>
+      <jointName>FL_blade_joint</jointName>
+      <linkName>FL_blade</linkName>
+      <turningDirection>cw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>10000</maxRotVelocity>
+      <motorConstant>20.54858e-06</motorConstant>
+      <momentConstant>0.016</momentConstant>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>2</motorNumber>
+      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <motorSpeedPubTopic>/motor_speed/2</motorSpeedPubTopic>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin filename="libgazebo_motor_model.so" name="front_right_motor_model">
+      <robotNamespace></robotNamespace>
+      <jointName>FR_blade_joint</jointName>
+      <linkName>FR_blade</linkName>
+      <turningDirection>ccw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>10000</maxRotVelocity>
+      <motorConstant>20.54858e-06</motorConstant>
+      <momentConstant>0.016</momentConstant>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>0</motorNumber>
+      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <motorSpeedPubTopic>/motor_speed/0</motorSpeedPubTopic>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin filename="libgazebo_motor_model.so" name="back_right_motor_model">
+      <robotNamespace></robotNamespace>
+      <jointName>BR_blade_joint</jointName>
+      <linkName>BR_blade</linkName>
+      <turningDirection>cw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>10000</maxRotVelocity>
+      <motorConstant>20.54858e-06</motorConstant>
+      <momentConstant>0.016</momentConstant>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>3</motorNumber>
+      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <motorSpeedPubTopic>/motor_speed/3</motorSpeedPubTopic>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin filename="libgazebo_motor_model.so" name="back_left_motor_model">
+      <robotNamespace></robotNamespace>
+      <jointName>BL_blade_joint</jointName>
+      <linkName>BL_blade</linkName>
+      <turningDirection>ccw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>10000</maxRotVelocity>
+      <motorConstant>20.54858e-06</motorConstant>
+      <momentConstant>0.016</momentConstant>
+      <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
+      <motorNumber>1</motorNumber>
+      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <motorSpeedPubTopic>/motor_speed/1</motorSpeedPubTopic>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+    </plugin>
+  </gazebo>
+  <gazebo reference="base_link">
+    <material>Gazebo/BlackTransparent</material>
+  </gazebo>
+  <gazebo reference="FL_blade">
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <gazebo reference="FR_blade">
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <gazebo reference="BL_blade">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="BR_blade">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo>
+    <plugin filename="libgazebo_mavlink_interface.so" name="mavlink_interface">
+      <robotNamespace></robotNamespace>
+      <imuSubTopic>/imu</imuSubTopic>
+      <gpsSubTopic>/gps</gpsSubTopic>
+      <magSubTopic>/mag</magSubTopic>
+      <baroSubTopic>/baro</baroSubTopic>
+      <mavlink_addr>INADDR_ANY</mavlink_addr>
+      <mavlink_udp_port>14560</mavlink_udp_port>
+      <mavlink_tcp_port>4560</mavlink_tcp_port>
+      <serialEnabled>false</serialEnabled>
+      <serialDevice>/dev/ttyACM0</serialDevice>
+      <baudRate>921600</baudRate>
+      <qgc_addr>INADDR_ANY</qgc_addr>
+      <qgc_udp_port>14550</qgc_udp_port>
+      <sdk_addr>INADDR_ANY</sdk_addr>
+      <sdk_udp_port>14540</sdk_udp_port>
+      <hil_mode>false</hil_mode>
+      <hil_state_level>false</hil_state_level>
+      <vehicle_is_tailsitter>false</vehicle_is_tailsitter>
+      <send_vision_estimation>false</send_vision_estimation>
+      <send_odometry>false</send_odometry>
+      <enable_lockstep>false</enable_lockstep>
+      <use_tcp>true</use_tcp>
+      <motorSpeedCommandPubTopic>/gazebo/command/motor_speed</motorSpeedCommandPubTopic>
+      <control_channels>
+        <channel name="rotor1">
+          <input_index>0</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>1000</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+        <channel name="rotor2">
+          <input_index>1</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>1000</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+        <channel name="rotor3">
+          <input_index>2</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>1000</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+        <channel name="rotor4">
+          <input_index>3</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>1000</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+      </control_channels>
+    </plugin>
+  </gazebo>
+  <!-- Mount an ADIS16448 IMU. -->
+  <!-- IMU link -->
+  <link name="/imu_link">
+    <inertial>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" />
+      <mass value="0.015" />
+      <!-- [kg] -->
+      <origin rpy="0 0 0" xyz="0 0 0" />
+    </inertial>
+  </link>
+  <!-- IMU joint -->
+  <joint name="/imu_joint" type="revolute">
+    <origin rpy="0 0 0" xyz="0 0 0" />
+    <parent link="base_link" />
+    <child link="/imu_link" />
+    <limit effort="0" lower="0" upper="0" velocity="0" />
+  </joint>
+  <gazebo>
+    <plugin filename="libgazebo_imu_plugin.so" name="rotors_gazebo_imu_plugin">
+      <!-- A good description of the IMU parameters can be found in the kalibr documentation:
+           https://github.com/ethz-asl/kalibr/wiki/IMU-Noise-Model-and-Intrinsics -->
+      <robotNamespace></robotNamespace>
+      <!-- (string, required): ros namespace in which the messages are published -->
+      <linkName>/imu_link</linkName>
+      <!-- (string, required): name of the body which holds the IMU sensor -->
+      <imuTopic>/imu</imuTopic>
+      <!-- (string): name of the sensor output topic and prefix of service names (defaults to imu) -->
+      <gyroscopeNoiseDensity>0.00018665</gyroscopeNoiseDensity>
+      <!-- Gyroscope noise density (two-sided spectrum) [rad/s/sqrt(Hz)] -->
+      <gyroscopeRandomWalk>3.8785e-05</gyroscopeRandomWalk>
+      <!-- Gyroscope bias random walk [rad/s/s/sqrt(Hz)] -->
+      <gyroscopeBiasCorrelationTime>1000.0</gyroscopeBiasCorrelationTime>
+      <!-- Gyroscope bias correlation time constant [s] -->
+      <gyroscopeTurnOnBiasSigma>0.0087</gyroscopeTurnOnBiasSigma>
+      <!-- Gyroscope turn on bias standard deviation [rad/s] -->
+      <accelerometerNoiseDensity>0.00186</accelerometerNoiseDensity>
+      <!-- Accelerometer noise density (two-sided spectrum) [m/s^2/sqrt(Hz)] -->
+      <accelerometerRandomWalk>0.006</accelerometerRandomWalk>
+      <!-- Accelerometer bias random walk. [m/s^2/s/sqrt(Hz)] -->
+      <accelerometerBiasCorrelationTime>300.0</accelerometerBiasCorrelationTime>
+      <!-- Accelerometer bias correlation time constant [s] -->
+      <accelerometerTurnOnBiasSigma>0.196</accelerometerTurnOnBiasSigma>
+      <!-- Accelerometer turn on bias standard deviation [m/s^2] -->
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin filename="libgazebo_magnetometer_plugin.so" name="magnetometer_plugin">
+      <robotNamespace></robotNamespace>
+      <pubRate>20</pubRate>
+      <noiseDensity>0.0004</noiseDensity>
+      <randomWalk>6.4e-06</randomWalk>
+      <biasCorrelationTime>600</biasCorrelationTime>
+      <magTopic>/mag</magTopic>
+    </plugin>
+  </gazebo>
+  <!-- Instantiate barometer plugin. -->
+  <gazebo>
+    <plugin filename="libgazebo_barometer_plugin.so" name="barometer_plugin">
+      <robotNamespace></robotNamespace>
+      <pubRate>10</pubRate>
+      <baroTopic>/baro</baroTopic>
+    </plugin>
+  </gazebo>
+  <!-- camera body, with origin at bottom screw mount -->
+  <joint name="camera_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.2"/>
+    <parent link="base_link"/>
+    <child link="camera_bottom_screw_frame"/>
+  </joint>
+  <link name="camera_bottom_screw_frame"/>
+  <joint name="camera_link_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0.0175 0.0125"/>
+    <parent link="camera_bottom_screw_frame"/>
+    <child link="camera_link"/>
+  </joint>
+  <link name="camera_link">
+    <visual>
+      <origin rpy="1.5707963267948966 0 1.5707963267948966" xyz="0.0149 -0.0175 0"/>
+      <geometry>
+        <mesh filename="package://realsense_ros_gazebo/meshes/realsense_d435.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 -0.0175 0"/>
+      <geometry>
+        <box size="0.02505 0.09 0.025"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.564"/>
+      <origin rpy="0 0 0" xyz="0 -0.0175 0"/>
+      <inertia ixx="0.000410075" ixy="0" ixz="0" iyy="5.8867617499999996e-05" iyz="0" izz="5.8867617499999996e-05"/>
+    </inertial>
+  </link>
+  <!-- camera depth joints and links -->
+  <joint name="camera_depth_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="camera_link"/>
+    <child link="camera_depth_frame"/>
+  </joint>
+  <link name="camera_depth_frame"/>
+  <joint name="camera_depth_optical_joint" type="fixed">
+    <origin rpy="-1.5707963267948966 0 -1.5707963267948966" xyz="0 0 0"/>
+    <parent link="camera_depth_frame"/>
+    <child link="camera_depth_optical_frame"/>
+  </joint>
+  <link name="camera_depth_optical_frame"/>
+  <!-- camera left IR joints and links -->
+  <joint name="camera_left_ir_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0.0 0"/>
+    <parent link="camera_depth_frame"/>
+    <child link="camera_left_ir_frame"/>
+  </joint>
+  <link name="camera_left_ir_frame"/>
+  <joint name="camera_left_ir_optical_joint" type="fixed">
+    <origin rpy="-1.5707963267948966 0 -1.5707963267948966" xyz="0 0 0"/>
+    <parent link="camera_left_ir_frame"/>
+    <child link="camera_left_ir_optical_frame"/>
+  </joint>
+  <link name="camera_left_ir_optical_frame"/>
+  <!-- camera right IR joints and links -->
+  <joint name="camera_right_ir_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 -0.05 0"/>
+    <parent link="camera_depth_frame"/>
+    <child link="camera_right_ir_frame"/>
+  </joint>
+  <link name="camera_right_ir_frame"/>
+  <joint name="camera_right_ir_optical_joint" type="fixed">
+    <origin rpy="-1.5707963267948966 0 -1.5707963267948966" xyz="0 0 0"/>
+    <parent link="camera_right_ir_frame"/>
+    <child link="camera_right_ir_optical_frame"/>
+  </joint>
+  <link name="camera_right_ir_optical_frame"/>
+  <!-- camera color joints and links -->
+  <joint name="camera_color_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0.015 0"/>
+    <parent link="camera_depth_frame"/>
+    <child link="camera_color_frame"/>
+  </joint>
+  <link name="camera_color_frame"/>
+  <joint name="camera_color_optical_joint" type="fixed">
+    <origin rpy="-1.5707963267948966 0 -1.5707963267948966" xyz="0 0 0"/>
+    <parent link="camera_color_frame"/>
+    <child link="camera_color_optical_frame"/>
+  </joint>
+  <link name="camera_color_optical_frame"/>
+  <!-- gazebo plugin -->
+  <gazebo reference="camera_link">
+    <self_collide>0</self_collide>
+    <enable_wind>0</enable_wind>
+    <kinematic>0</kinematic>
+    <gravity>1</gravity>
+    <mu2>1</mu2>
+    <fdir1>0 0 0</fdir1>
+    <kp>1e+13</kp>
+    <kd>1</kd>
+    <sensor name="camera_color" type="camera">
+      <camera name="camera">
+        <horizontal_fov>1.2112585008840648</horizontal_fov>
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>RGB_INT8</format>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <visualize>1</visualize>
+    </sensor>
+    <sensor name="camera_ired1" type="camera">
+      <camera name="camera">
+        <horizontal_fov>1.4870205226991688</horizontal_fov>
+        <image>
+          <width>1280</width>
+          <height>720</height>
+          <format>L_INT8</format>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.05</stddev>
+        </noise>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>90</update_rate>
+      <visualize>0</visualize>
+    </sensor>
+    <sensor name="camera_ired2" type="camera">
+      <camera name="camera">
+        <horizontal_fov>1.4870205226991688</horizontal_fov>
+        <image>
+          <width>1280</width>
+          <height>720</height>
+          <format>L_INT8</format>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.05</stddev>
+        </noise>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>90</update_rate>
+      <visualize>0</visualize>
+    </sensor>
+    <sensor name="camera_depth" type="depth">
+      <camera name="camera">
+        <horizontal_fov>1.4870205226991688</horizontal_fov>
+        <image>
+          <width>1280</width>
+          <height>720</height>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.100</stddev>
+        </noise>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>90</update_rate>
+      <visualize>0</visualize>
+    </sensor>
+  </gazebo>
+  <gazebo>
+    <plugin filename="librealsense_gazebo_plugin.so" name="camera">
+      <prefix>camera_</prefix>
+      <depthUpdateRate>30.0</depthUpdateRate>
+      <colorUpdateRate>30.0</colorUpdateRate>
+      <infraredUpdateRate>30.0</infraredUpdateRate>
+      <depthTopicName>depth/image_raw</depthTopicName>
+      <depthCameraInfoTopicName>depth/camera_info</depthCameraInfoTopicName>
+      <colorTopicName>color/image_raw</colorTopicName>
+      <colorCameraInfoTopicName>color/camera_info</colorCameraInfoTopicName>
+      <infrared1TopicName>infra1/image_raw</infrared1TopicName>
+      <infrared1CameraInfoTopicName>infra1/camera_info</infrared1CameraInfoTopicName>
+      <infrared2TopicName>infra2/image_raw</infrared2TopicName>
+      <infrared2CameraInfoTopicName>infra2/camera_info</infrared2CameraInfoTopicName>
+      <colorOpticalframeName>camera_color_optical_frame</colorOpticalframeName>
+      <depthOpticalframeName>camera_depth_optical_frame</depthOpticalframeName>
+      <infrared1OpticalframeName>camera_infrared1_optical_frame</infrared1OpticalframeName>
+      <infrared2OpticalframeName>camera_infrared2_optical_frame</infrared2OpticalframeName>
+      <rangeMinDepth>0.2</rangeMinDepth>
+      <rangeMaxDepth>10.0</rangeMaxDepth>
+      <pointCloud>false</pointCloud>
+      <pointCloudTopicName>depth/color/points</pointCloudTopicName>
+      <pointCloudCutoff>0.25</pointCloudCutoff>
+      <pointCloudCutoffMax>9.0</pointCloudCutoffMax>
+    </plugin>
+  </gazebo>
+</robot>

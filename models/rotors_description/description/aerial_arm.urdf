@@ -1,0 +1,74 @@
+<?xml version="1.0" ?>
+<robot name="aerial_arm">
+  <joint name="aerial_arm__arm_0_joint" type="revolute">
+    <parent link="aerial_arm__arm_base"/>
+    <child link="aerial_arm__arm_0"/>
+    <origin rpy="0 0 0" xyz="-0.00732 -0.04125 -0.04"/>
+    <axis xyz="0 -1  0"/>
+    <limit effort="0.0" lower="-1e+16" upper="1e+16" velocity="0.0"/>
+  </joint>
+  <joint name="aerial_arm__arm_1_joint" type="revolute">
+    <parent link="aerial_arm__arm_0"/>
+    <child link="aerial_arm__arm_1"/>
+    <origin rpy="0 0 0" xyz="-0.08603  0.0522  -0.0102"/>
+    <axis xyz="0 -1  0"/>
+    <limit effort="0.0" lower="-1e+16" upper="1e+16" velocity="0.0"/>
+  </joint>
+  <link name="aerial_arm__arm_base">
+    <inertial>
+      <mass value="0.103384"/>
+      <origin rpy="0 0 0" xyz="-0.00589 -0.00437 -0.02143"/>
+      <inertia ixx="3.43967e-05" ixy="6.34394e-06" ixz="1.45311e-07" iyy="7.12984e-05" iyz="-1.42696e-06" izz="7.24776e-05"/>
+    </inertial>
+    <collision name="aerial_arm__arm_base_collision">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://aerial_catcher/description/meshes/arm_base.STL" scale="1 1 1"/>
+      </geometry>
+    </collision>
+    <visual name="aerial_arm__arm_base_visual">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://aerial_catcher/description/meshes/arm_base.STL" scale="1 1 1"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="aerial_arm__arm_0">
+    <inertial>
+      <mass value="0.0244861"/>
+      <origin rpy="0 0 0" xyz="-0.04882  0.0389  -0.02625"/>
+      <inertia ixx="8.03719e-06" ixy="-1.89512e-20" ixz="-1.1836e-05" iyy="3.08373e-05" iyz="-9.58674e-21" izz="2.36851e-05"/>
+    </inertial>
+    <collision name="aerial_arm__arm_0_collision">
+      <origin rpy="0 0 0" xyz="0.00732 0.04125 0.04"/>
+      <geometry>
+        <mesh filename="package://aerial_catcher/description/meshes/arm_0.STL" scale="1 1 1"/>
+      </geometry>
+    </collision>
+    <visual name="aerial_arm__arm_0_visual">
+      <origin rpy="0 0 0" xyz="0.00732 0.04125 0.04"/>
+      <geometry>
+        <mesh filename="package://aerial_catcher/description/meshes/arm_0.STL" scale="1 1 1"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="aerial_arm__arm_1">
+    <inertial>
+      <mass value="0.0942066"/>
+      <origin rpy="0 0 0" xyz="1.4682e-01 2.8000e-02 7.0000e-05"/>
+      <inertia ixx="7.87755e-05" ixy="-1.26309e-20" ixz="-3.46545e-20" iyy="0.000162859" iyz="-6.40357e-21" izz="0.000238545"/>
+    </inertial>
+    <collision name="aerial_arm__arm_1_collision">
+      <origin rpy="0 0 0" xyz="0.09335 -0.01095  0.0502"/>
+      <geometry>
+        <mesh filename="package://aerial_catcher/description/meshes/arm_1.STL" scale="1 1 1"/>
+      </geometry>
+    </collision>
+    <visual name="aerial_arm__arm_1_visual">
+      <origin rpy="0 0 0" xyz="0.09335 -0.01095  0.0502"/>
+      <geometry>
+        <mesh filename="package://aerial_catcher/description/meshes/arm_1.STL" scale="1 1 1"/>
+      </geometry>
+    </visual>
+  </link>
+</robot>

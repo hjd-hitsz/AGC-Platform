@@ -1,5 +1,5 @@
 # Overview
-We choose the release/1.12 version of PX4 to address various issues related to package adaptation, as significant differences exist between different PX4 versions. Please follow instructions below to install PX4.
+We choose the `release/1.12` version of PX4 to address various issues related to package adaptation, as significant differences exist between different PX4 versions. Please follow instructions below to install PX4.
 # Installation
 ## QGroundControl
 follow this [instruction](https://docs.qgroundcontrol.com/master/en/qgc-user-guide/getting_started/download_and_install.html) to install QGC ground station
