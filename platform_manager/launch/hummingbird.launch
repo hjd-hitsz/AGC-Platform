@@ -13,4 +13,5 @@
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
     <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
     <include file="$(find platform_manager)/launch/px4.launch"/>
+    <node name="px4_pose_feedback" pkg="platform_manager" type="get_gazebo_pose_feedback.py" output="log"/>
 </launch>

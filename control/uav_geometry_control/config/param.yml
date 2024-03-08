@@ -1,0 +1,27 @@
+takeoff:
+  init_x: 0.0
+  init_y: 0.0
+  init_z: 1.6
+  hover_x: 0.5
+  hover_y: 0.0
+  hover_z: 1.17
+  delay: 10 # unit: s
+
+timeout:
+  odom: 0.5 # unit: s
+  cmd: 0.5 # unit: s
+
+geometry_control:
+  kpx: 3
+  kpy: 3
+  kpz: 3
+  kvx: 1
+  kvy: 1
+  kvz: 1
+  kwx: 3
+  kwy: 3
+  kwz: 3
+
+minJerk:
+  v_max: 2
+  yaw_dot_max: 0.5
