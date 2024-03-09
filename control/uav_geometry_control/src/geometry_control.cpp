@@ -25,10 +25,9 @@ Eigen::Vector4d GeometryControl::getControl(Eigen::Vector3d p,
     auto b3 = R * e3;
     
     // compute thrust command and convert to thrust rate
-    
     auto pe = p - p_des;
     auto ve = v - v_des;
-    auto a_cmd = - kp_.cwiseProduct(pe) - kv_.cwiseProduct(ve) + g_ * e3 + a_des;
+    auto a_cmd = - kp_.cwiseProduct(pe) - kv_.cwiseProduct(ve) + g_ * e3 + a_des;// acceleration of thrust
     auto a_norm_cmd = a_cmd.dot(b3);
     auto b3d = a_cmd.normalized();
     auto thrust_rate = std::min(hover_thrust_rate_ / g_ * a_norm_cmd, 1.0);
@@ -57,7 +56,7 @@ Eigen::Vector4d GeometryControl::getControl(Eigen::Vector3d p,
     // std::cout << "w_des" << w_des.transpose() << std::endl;
     
     // compute angular velocity command and output
-    auto w_cmd = - kr_.cwiseProduct(re);// + R.transpose() * R_des * w_des
+    auto w_cmd = - kr_.cwiseProduct(re);// + 0.5 * R.transpose() * R_des * w_des
     Eigen::Vector4d control;
     control << thrust_rate, w_cmd(0), w_cmd(1), w_cmd(2);
     return control;

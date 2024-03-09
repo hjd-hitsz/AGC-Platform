@@ -14,15 +14,16 @@ timeout:
 geometry_control:
   kpx: 7
   kpy: 7
-  kpz: 7
+  kpz: 10
   kvx: 2.5
   kvy: 2.5
-  kvz: 2.5
+  kvz: 4
   krx: 10
   kry: 10
   krz: 10
   hover_thrust_rate: 0.488
 
 minJerk:
-  v_max: 3
-  yaw_dot_max: 1
+  v_max: 5
+  a_max: 1
+  yaw_dot_max: 1.5

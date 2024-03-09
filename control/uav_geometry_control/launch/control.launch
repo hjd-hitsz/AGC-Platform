@@ -7,6 +7,9 @@
         <rosparam command="load" file="$(find uav_geometry_control)/config/param.yml"/>
         <param name="odom_topic" value="$(arg odom_topic)"/>
         <param name="flatness_polycoeffs_topic" value="$(arg flatness_polycoeffs_topic)"/>
+        <param name="if_debug" value=""/>
+        <param name="rate" value="100"/>
+        
     </node>
     <node name="fake_odom_sender" pkg="uav_geometry_control" type="fake_odom_sender.py" output="screen">
         <param name="odom_topic" value="$(arg odom_topic)"/>

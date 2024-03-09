@@ -29,6 +29,9 @@ private:
     ros::Publisher attitude_pub_;
     ros::ServiceClient set_mode_client_;
     ros::ServiceClient arm_client_;
+    
+    bool if_debug_;
+    
 public:
     ControlInterface(ControlParam &param, ros::NodeHandle &nh);
     ~ControlInterface(){}
