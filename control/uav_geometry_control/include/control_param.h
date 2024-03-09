@@ -14,6 +14,7 @@ public:
     double cmd_td;
     
     Eigen::Vector3d kp, kv, kr;
+    double hover_thrust_rate;
     
     ControlParam(ros::NodeHandle &nh);
     ~ControlParam(){}

@@ -3,7 +3,8 @@
 #include "control_param.h"
 #include <ros/ros.h>
 #include <nav_msgs/Odometry.h>
-#include <uav_geometry_control/flatness_cmd.h>
+#include <uav_geometry_control/flatness_polycoeffs.h>
+#include <mavros_msgs/AttitudeTarget.h>
 #include <mavros_msgs/State.h>
 #include <mavros_msgs/SetMode.h>
 #include <mavros_msgs/CommandBool.h>
@@ -11,7 +12,6 @@
 class ControlInterface
 {
 private:
-    
     ros::Time odom_stamp_;
     ros::Time cmd_stamp_;
     
@@ -21,7 +21,12 @@ private:
     
     ControlParam param_;
     
+    std::shared_ptr<GeometryControl> gc_;
+    Eigen::Matrix<double, 4, -1> coeffs_;
+    double duration_;
+    
     ros::Publisher local_pose_pub_;
+    ros::Publisher attitude_pub_;
     ros::ServiceClient set_mode_client_;
     ros::ServiceClient arm_client_;
 public:
@@ -30,13 +35,14 @@ public:
     
     // callback
     void odomCallback(const nav_msgs::Odometry::ConstPtr& msg);
-    void cmdCallback(const uav_geometry_control::flatness_cmd::ConstPtr& msg);
     void mavrosStateCallback(const mavros_msgs::State::ConstPtr& msg);
+    void coeffsCallback(const uav_geometry_control::flatness_polycoeffs::ConstPtr& msg);
     
-    // judge
+    // condition
     bool isTakeover(const Eigen::Vector3d &pose, const Eigen::Quaterniond &quat);
     
     // process
     void takeoff();
     void commandControl();
+    Eigen::VectorXd polycommandResolve(double tf);
 };

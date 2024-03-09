@@ -9,11 +9,11 @@ int main(int argc, char** argv)
     ControlParam param(nh);
     ROS_INFO("[controller_node] param load");
     ControlInterface controller(param, nh);
-    auto flatness_cmd_topic = nh.param<std::string>("flatness_cmd_topic", "/flatness_cmd");
+    auto flatness_polycoeffs_topic = nh.param<std::string>("flatness_polycoeffs_topic", "/flatness_polycoeffs");
     auto odom_topic = nh.param<std::string>("odom_topic", "/odom");
     auto state_sub = nh.subscribe("/mavros/state", 1, &ControlInterface::mavrosStateCallback, &controller);
-    auto cmd_sub = nh.subscribe(flatness_cmd_topic, 1, &ControlInterface::cmdCallback, &controller);
     auto odom_sub = nh.subscribe(odom_topic, 1, &ControlInterface::odomCallback, &controller);
+    auto coeffs_sub = nh.subscribe(flatness_polycoeffs_topic, 1, &ControlInterface::coeffsCallback, &controller);
     controller.takeoff();
     ros::Rate rate(100);
     while (ros::ok()) {

@@ -1,24 +1,20 @@
 <?xml version="1.0"?>
 <launch>
     <arg name="odom_topic" default="/odom"/>
-    <arg name="flatness_cmd_topic" default="/flatness_cmd"/>
     <arg name="flatness_polycoeffs_topic" default="/flatness_polycoeffs"/>
     <arg name="cmd_mode" default="min_jerk"/>
-    <!-- <arg name="cmd_mode" default="cmd"/> -->
-    <!-- <node name="controller_node" pkg="uav_geometry_control" type="controller_node"  output="screen">
+    <node name="controller_node" pkg="uav_geometry_control" type="controller_node"  output="screen">
         <rosparam command="load" file="$(find uav_geometry_control)/config/param.yml"/>
         <param name="odom_topic" value="$(arg odom_topic)"/>
-        <param name="flatness_cmd_topic" value="$(arg flatness_cmd_topic)"/>
-    </node> -->
+        <param name="flatness_polycoeffs_topic" value="$(arg flatness_polycoeffs_topic)"/>
+    </node>
     <node name="fake_odom_sender" pkg="uav_geometry_control" type="fake_odom_sender.py" output="screen">
         <param name="odom_topic" value="$(arg odom_topic)"/>
     </node>
     <node name="fake_cmd_sender" pkg="uav_geometry_control" type="fake_cmd_sender.py"  output="screen">
         <rosparam command="load" file="$(find uav_geometry_control)/config/param.yml"/>
         <param name="odom_topic" value="$(arg odom_topic)"/>
-        <param name="flatness_cmd_topic" value="$(arg flatness_cmd_topic)"/>
         <param name="flatness_polycoeffs_topic" value="$(arg flatness_polycoeffs_topic)"/>
         <param name="piece_r" value="0.5"/>
-        <param name="cmd_mode" value="$(arg cmd_mode)"/>
     </node>
 </launch>
