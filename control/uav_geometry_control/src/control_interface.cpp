@@ -38,7 +38,8 @@ void ControlInterface::coeffsCallback(const uav_geometry_control::flatness_polyc
         coeffs_(3, i) = msg->yaw_coeff[i].data;
     }
     duration_ = msg->tf;
-    cmd_stamp_ = msg->header.stamp;
+    t0_ = msg->header.stamp.toSec();
+    cmd_stamp_ = ros::Time::now();
 }
 
 bool ControlInterface::isTakeover(const Eigen::Vector3d &pose, const Eigen::Quaterniond &quat)
@@ -131,9 +132,10 @@ void ControlInterface::takeoff()
 
 void ControlInterface::commandControl()
 {
-    double tf = ros::Time::now().toSec() - cmd_stamp_.toSec();
+    double tf = ros::Time::now().toSec() - t0_;
     tf = std::min(tf, duration_);
     auto cmd = polycommandResolve(tf);
+    // std::cout << "tf: " << tf << '\t' << "cmd: " << cmd.transpose() << std::endl;
     Eigen::Vector3d p_des, v_des, a_des, j_des, p, v;
     p_des << cmd(0), cmd(1), cmd(2);
     v_des << cmd(3), cmd(4), cmd(5);

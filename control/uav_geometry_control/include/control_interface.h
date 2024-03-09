@@ -23,7 +23,7 @@ private:
     
     std::shared_ptr<GeometryControl> gc_;
     Eigen::Matrix<double, 4, -1> coeffs_;
-    double duration_;
+    double duration_, t0_;
     
     ros::Publisher local_pose_pub_;
     ros::Publisher attitude_pub_;

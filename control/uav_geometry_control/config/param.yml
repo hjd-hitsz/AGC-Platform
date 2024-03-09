@@ -18,11 +18,11 @@ geometry_control:
   kvx: 2.5
   kvy: 2.5
   kvz: 2.5
-  krx: 4
-  kry: 4
-  krz: 4
+  krx: 10
+  kry: 10
+  krz: 10
   hover_thrust_rate: 0.488
 
 minJerk:
-  v_max: 2
-  yaw_dot_max: 0.5
+  v_max: 3
+  yaw_dot_max: 1

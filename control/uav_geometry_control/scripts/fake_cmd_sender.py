@@ -19,6 +19,8 @@ class GenerateMinJerk:
         self.odom = Odometry()
         self.v_max = v_max
         self.yaw_dot_max = yaw_dot_max
+        self.start_header = self.odom.header
+        self.start_header.stamp = rospy.Time.now()
         hover_x = rospy.get_param('~takeoff/hover_x', 0.5)
         hover_y = rospy.get_param('~takeoff/hover_y', 0)
         hover_z = rospy.get_param('~takeoff/hover_z', 1.17)
@@ -51,14 +53,12 @@ class GenerateMinJerk:
         self.coeffs[3] = self.minJerk(yaw0, yawf, self.duration)
         t_use = t.time() - t0
         rospy.loginfo(f"compute minJerk trajectory, duration: {self.duration}s, time usage: {t_use}s, goal: {[pf[0], pf[1], pf[2], yawf]}")
-        t_span = np.linspace(0, self.duration, math.ceil(self.duration / 0.1))
-        x = [self.coeffs[0][0] + self.coeffs[0][1] * t + self.coeffs[0][2] * t**2 + self.coeffs[0][3] * t**3 + self.coeffs[0][4] * t**4 + self.coeffs[0][5] * t**5 for t in t_span]
-        y = [self.coeffs[1][0] + self.coeffs[1][1] * t + self.coeffs[1][2] * t**2 + self.coeffs[1][3] * t**3 + self.coeffs[1][4] * t**4 + self.coeffs[1][5] * t**5 for t in t_span]
-        z = [self.coeffs[2][0] + self.coeffs[2][1] * t + self.coeffs[2][2] * t**2 + self.coeffs[2][3] * t**3 + self.coeffs[2][4] * t**4 + self.coeffs[2][5] * t**5 for t in t_span]
-        points = np.array([x, y, z]).T
-        np.savetxt("/home/hjd-nrsl/code/AGC_Platform_ws/src/AGC-Platform/control/uav_geometry_control/data/point.txt", points)
+        self.start_header = self.odom.header
     def transfer_time(self, yaw0, yawf, p0, pf):
-        return max(abs(yaw0 - yawf) / self.yaw_dot_max * 2, la.norm(pf - p0) / self.v_max)
+        t_yaw = abs(yaw0 - yawf) / self.yaw_dot_max * 2
+        t_p = la.norm(pf - p0) / self.v_max
+        rospy.loginfo(f"yaw transfer time: {t_yaw}, p transfer time: {t_p}")
+        return max(t_yaw, t_p)
     def minJerk(self, x0, xf, t):
         A = np.zeros((6, 6))
         A[0, 0] = 1
@@ -79,7 +79,7 @@ class GenerateMinJerk:
         coeffs.y_coeff = [Float64(c) for c in self.coeffs[1]]
         coeffs.z_coeff = [Float64(c) for c in self.coeffs[2]]
         coeffs.yaw_coeff = [Float64(c) for c in self.coeffs[3]]
-        coeffs.header = self.odom.header
+        coeffs.header = self.start_header
         self.coeffs_pub.publish(coeffs)
 
 if __name__ == '__main__':
@@ -87,7 +87,7 @@ if __name__ == '__main__':
     odom_topic = rospy.get_param('~odom_topic', '/odom')
     v_max = rospy.get_param('~minJerk/v_max', 0.5)
     yaw_dot_max = rospy.get_param('~minJerk/yaw_dot_max', 0.5)
-    generator = GenerateMinJerk(v_max=0.5, yaw_dot_max=0.5)
+    generator = GenerateMinJerk(v_max, yaw_dot_max)
     odom_sub = rospy.Subscriber(odom_topic, Odometry, generator.recv_odom)
     goal_sub = rospy.Subscriber('/move_base_simple/goal', PoseStamped, generator.recv_nav_goal)
     cmd_timer = rospy.Timer(rospy.Duration(0.02), generator.send_coeffs_timer)

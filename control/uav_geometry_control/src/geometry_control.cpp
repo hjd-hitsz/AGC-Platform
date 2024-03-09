@@ -54,7 +54,7 @@ Eigen::Vector4d GeometryControl::getControl(Eigen::Vector3d p,
     auto wy = hw.dot(b1d);
     auto wz = yaw_rate_des * e3.dot(b3d);
     Eigen::Vector3d w_des(wx, wy, wz);
-    std::cout << "w_des" << w_des.transpose() << std::endl;
+    // std::cout << "w_des" << w_des.transpose() << std::endl;
     
     // compute angular velocity command and output
     auto w_cmd = - kr_.cwiseProduct(re);// + R.transpose() * R_des * w_des
